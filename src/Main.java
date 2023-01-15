@@ -7,6 +7,7 @@ public class Main {
     static String operand;
 
     public static void main(String[] args) throws Exception {
+        Scanner input = new Scanner(System.in);
         System.out.println("Введите 2 целых числа: ");
         String str = input.nextLine();
         String [] userInput = str.split(" "); //деление массива на элменеты, с помощью пробела
@@ -17,7 +18,10 @@ public class Main {
         int b = Integer.parseInt(userInput[2]); //приведение второй переменной в целое число и отделение ее от массива
         if (a < 0 || a >10 && b < 0 || b>10) throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 0");
 
+        //if (a % 1 != 0) throw new Exception("throws Exception //т.к. число должно быть целым");
 
+
+    //public static int calc(int a, int b, String operand){}
         switch (operand) {
             case "+":
                 result = a + b;
