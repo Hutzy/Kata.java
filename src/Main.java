@@ -42,7 +42,7 @@ public class Main {
         //System.out.println(String.format("%s %s", a, b)); //тест вывода переменных
         System.out.println(result);
         System.out.println(str.length());
-        System.out.println(str.length());
+
 
 
     }
