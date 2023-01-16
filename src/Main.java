@@ -1,5 +1,4 @@
 /*
-работает после деления на 0, срабатывает двойное исклюение при делении на 0
 подключить римские цифры
  */
 
@@ -17,6 +16,11 @@ public class Main {
         System.out.println("Введите 2 целых числа: ");
         String str = input.nextLine();
         String[] userInput = str.split(" "); //деление массива на элменеты, с помощью пробела
+//            if (new Scanner(str).hasNextInt()) {
+//                System.out.println("999");
+//            } else {
+//                System.out.println("000");
+//            }
         if (userInput.length > 3)
             throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
         if (userInput.length < 2)
@@ -31,8 +35,6 @@ public class Main {
         result = calc(a, b, operand);
         System.out.println(result);
         System.out.println(Roman());
-        //System.out.println(str.length());
-        //System.out.println(String.format("%s %s", a, b)); //тест вывода переменных
         } catch (NumberFormatException e) {
             System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
         }
@@ -40,35 +42,32 @@ public class Main {
 
 
 
- /*       private static int romanToNumber (String roman) {
-            try {
-                if (roman.equals("I")) {
+       public static int romanToNumber(String str) {
+                if (str.equals("I")) {
                     return 1;
-                } else if (roman.equals("II")) {
+                } else if (str.equals("II")) {
                     return 2;
-                } else if (roman.equals("III")) {
+                } else if (str.equals("III")) {
                     return 3;
-                } else if (roman.equals("IV")) {
+                } else if (str.equals("IV")) {
                     return 4;
-                } else if (roman.equals("V")) {
+                } else if (str.equals("V")) {
                     return 5;
-                } else if (roman.equals("VI")) {
+                } else if (str.equals("VI")) {
                     return 6;
-                } else if (roman.equals("VII")) {
+                } else if (str.equals("VII")) {
                     return 7;
-                } else if (roman.equals("VIII")) {
+                } else if (str.equals("VIII")) {
                     return 8;
-                } else if (roman.equals("IX")) {
+                } else if (str.equals("IX")) {
                     return 9;
-                } else if (roman.equals("X")) {
+                } else if (str.equals("X")) {
                     return 10;
                 }
-            } catch (InputMismatchException e) {
-                throw new InputMismatchException("Неверный формат данных");
-            }
-            return -1;
-        }
-*/
+           return 0;
+       }
+
+
 
     public static String Roman() {
         try {
