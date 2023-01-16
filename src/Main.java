@@ -1,7 +1,3 @@
-/*
-подключить римские цифры
- */
-
 import java.util.Scanner;
 
 public class Main {
@@ -28,20 +24,20 @@ public class Main {
                    throw new Exception("throws Exception //т.к. строка не является математической операцией");
                result = calc(a, b, operand);
                System.out.println(result);
-               test = romanToNumber(str);
-               System.out.println(test);
+//               test = romanToNumber(str);
+//               System.out.println(test);
                } catch (NumberFormatException e) {
                    System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
                }
 
             } else {
-               test = romanToNumber(str);
-               System.out.println(test);
+               String operand = userInput[1];
+               String strA = String.valueOf(romanToNumber(userInput[0])); //приведение первой переменной в целое число и отделение ее от массива
+               String strB = String.valueOf(romanToNumber(userInput[2])); //приведение второй переменной в целое число и отделение ее от массива
+               result = calc(Integer.parseInt(strA), Integer.parseInt(strB), operand);
+               System.out.println(Roman());
            }
-        System.out.println(Roman());
     }
-
-
 
     public static int romanToNumber(String str) {
            int a = 0;
@@ -81,7 +77,6 @@ public class Main {
     }
 
 
-
     public static String Roman() {
         try {
             String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
@@ -97,7 +92,6 @@ public class Main {
             throw new RuntimeException("throws Exception //т.к. в римской системе нет отрицательных чисел");
         }
     }
-
 
 
     public static int calc(int a, int b, String operand) {
@@ -119,15 +113,3 @@ public class Main {
         return result;
     }
 }
-
-
-
-        /*
-    if (a instanceof Integer) {
-                System.out.println(str.length());
-                System.out.println(String.format("%s %s", a, b));
-            }
-            else {
-                System.out.println(Roman());
-            }
-     */
