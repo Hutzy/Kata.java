@@ -24,22 +24,34 @@ public class Main {
                    throw new Exception("throws Exception //т.к. строка не является математической операцией");
                result = calc(a, b, operand);
                System.out.println(result);
-//               test = romanToNumber(str);
-//               System.out.println(test);
                } catch (NumberFormatException e) {
                    System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
                }
 
             } else {
+               try {
                String operand = userInput[1];
-               String strA = String.valueOf(romanToNumber(userInput[0])); //приведение первой переменной в целое число и отделение ее от массива
-               String strB = String.valueOf(romanToNumber(userInput[2])); //приведение второй переменной в целое число и отделение ее от массива
-               result = calc(Integer.parseInt(strA), Integer.parseInt(strB), operand);
-               System.out.println(Roman());
+               String strA = String.valueOf(romanToNumber(userInput[0])); //приведение первой переменной в строку и поиск арабской цифры число и отделение ее от массива
+               String strB = String.valueOf(romanToNumber(userInput[2])); //приведение первой переменной в строку и поиск арабской цифры число и отделение ее от массива
+                   if (Integer.parseInt(strA) < 1 || Integer.parseInt(strA) > 10)
+                       throw new Exception("throws Exception //т.к. введено неподходящее число больше X или меньше I");
+                   if (Integer.parseInt(strB) < 1 || Integer.parseInt(strB) > 10)
+                       throw new Exception("throws Exception //т.к. введено неподходящее число больше X или меньше I");
+                   if (userInput.length > 3)
+                       throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                   if (userInput.length < 2)
+                       throw new Exception("throws Exception //т.к. строка не является математической операцией");
+               result = calc(Integer.parseInt(strA), Integer.parseInt(strB), operand);//отправляю переменны стрА и стрб в метод в целочисленной форме
+                   if (result == 0)
+                       throw new Exception("throws Exception //т.к. В римской системе нет 0");
+                   System.out.println(Roman());
+               } catch (NumberFormatException e) {
+                   System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
+               }
            }
     }
 
-    public static int romanToNumber(String str) {
+    public static int romanToNumber(String str) { //соответствие римской иарабской цифры
            int a = 0;
            switch (str) {
                case "I":
@@ -77,7 +89,7 @@ public class Main {
     }
 
 
-    public static String Roman() {
+    public static String Roman() { //массив для ответов
         try {
             String[] roman = {"O", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV", "XV", "XVI", "XVII", "XVIII", "XIX", "XX",
                     "XXI", "XXII", "XXIII", "XXIV", "XXV", "XXVI", "XXVII", "XXVIII", "XXIX", "XXX", "XXXI", "XXXII", "XXXIII", "XXXIV", "XXXV", "XXXVI", "XXXVII", "XXXVIII", "XXXIX", "XL",
@@ -94,7 +106,7 @@ public class Main {
     }
 
 
-    public static int calc(int a, int b, String operand) {
+    public static int calc(int a, int b, String operand) { //метод для подсчетов
         int result = 0;
         switch (operand) {
             case "+":
