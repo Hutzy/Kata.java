@@ -6,63 +6,79 @@ import java.util.Scanner;
 
 public class Main {
     static int result;
+    static int test;
 
     public static void main(String[] args) throws Exception {
-        try {
         Scanner input = new Scanner(System.in);
         System.out.println("Введите 2 целых числа: ");
         String str = input.nextLine();
         String[] userInput = str.split(" "); //деление массива на элменеты, с помощью пробела
-//            if (new Scanner(str).hasNextInt()) {
-//                System.out.println("999");
-//            } else {
-//                System.out.println("000");
-//            }
-        if (userInput.length > 3)
-            throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
-        if (userInput.length < 2)
-            throw new Exception("throws Exception //т.к. строка не является математической операцией");
-        String operand = userInput[1];
-        int a = Integer.parseInt(userInput[0]); //приведение первой переменной в целое число и отделение ее от массива
-        int b = Integer.parseInt(userInput[2]); //приведение второй переменной в целое число и отделение ее от массива
-        if (a < 1 || a > 10)
-            throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
-        if (b < 1 || b > 10)
-            throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
-        result = calc(a, b, operand);
-        System.out.println(result);
+           if (new Scanner(str).hasNextInt()) {
+               try {
+               String operand = userInput[1];
+               int a = Integer.parseInt(userInput[0]); //приведение первой переменной в целое число и отделение ее от массива
+               int b = Integer.parseInt(userInput[2]); //приведение второй переменной в целое число и отделение ее от массива
+               if (a < 1 || a > 10)
+                   throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
+               if (b < 1 || b > 10)
+                   throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
+               if (userInput.length > 3)
+                   throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+               if (userInput.length < 2)
+                   throw new Exception("throws Exception //т.к. строка не является математической операцией");
+               result = calc(a, b, operand);
+               System.out.println(result);
+               test = romanToNumber(str);
+               System.out.println(test);
+               } catch (NumberFormatException e) {
+                   System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
+               }
+
+            } else {
+               test = romanToNumber(str);
+               System.out.println(test);
+           }
         System.out.println(Roman());
-        } catch (NumberFormatException e) {
-            System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
-        }
     }
 
 
 
-       public static int romanToNumber(String str) {
-                if (str.equals("I")) {
-                    return 1;
-                } else if (str.equals("II")) {
-                    return 2;
-                } else if (str.equals("III")) {
-                    return 3;
-                } else if (str.equals("IV")) {
-                    return 4;
-                } else if (str.equals("V")) {
-                    return 5;
-                } else if (str.equals("VI")) {
-                    return 6;
-                } else if (str.equals("VII")) {
-                    return 7;
-                } else if (str.equals("VIII")) {
-                    return 8;
-                } else if (str.equals("IX")) {
-                    return 9;
-                } else if (str.equals("X")) {
-                    return 10;
-                }
-           return 0;
-       }
+    public static int romanToNumber(String str) {
+           int a = 0;
+           switch (str) {
+               case "I":
+                   a = 1;
+                   break;
+               case "II":
+                   a = 2;
+                   break;
+               case "III":
+                   a = 3;
+                   break;
+               case "IV":
+                   a = 4;
+                   break;
+               case "V":
+                   a = 5;
+                   break;
+               case "VI":
+                   a = 6;
+                   break;
+               case "VII":
+                   a = 7;
+                   break;
+               case "VIII":
+                   a = 8;
+                   break;
+               case "IX":
+                   a = 9;
+                   break;
+               case "X":
+                   a = 10;
+               default:
+           }
+           return a;
+    }
 
 
 
