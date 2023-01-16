@@ -1,3 +1,6 @@
+// некорректно исключение при вводе V - 2
+// некорректно исключение при вводе дробного числа
+
 import java.util.Scanner;
 
 public class Main {
@@ -10,7 +13,10 @@ public class Main {
         String[] userInput = str.split(" "); //деление массива на элменеты, с помощью пробела
            if (new Scanner(str).hasNextInt()) {
                try {
-               String operand = userInput[1];
+                   if (userInput.length > 3)
+                       throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                   if (userInput.length < 2)
+                       throw new Exception("throws Exception //т.к. строка не является математической операцией");
                int a = Integer.parseInt(userInput[0]); //приведение первой переменной в целое число и отделение ее от массива
                int b = Integer.parseInt(userInput[2]); //приведение второй переменной в целое число и отделение ее от массива
                if (a * b == 0 || b * a == 0)
@@ -19,19 +25,19 @@ public class Main {
                    throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
                if (b < 1 || b > 10)
                    throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
-               if (userInput.length > 3)
-                   throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
-               if (userInput.length < 2)
-                   throw new Exception("throws Exception //т.к. строка не является математической операцией");
+               String operand = userInput[1];
                result = calc(a, b, operand);
                System.out.println(result);
                } catch (NumberFormatException e) {
                    System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
                }
 
-            } else {
+           } else {
                try {
-               String operand = userInput[1];
+                   if (userInput.length > 3)
+                       throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
+                   if (userInput.length < 2)
+                       throw new Exception("throws Exception //т.к. строка не является математической операцией");
                String strA = String.valueOf(romanToNumber(userInput[0])); //приведение первой переменной в строку и поиск арабской цифры число и отделение ее от массива
                String strB = String.valueOf(romanToNumber(userInput[2])); //приведение первой переменной в строку и поиск арабской цифры число и отделение ее от массива
                    if (Integer.parseInt(strA)*Integer.parseInt(strB) == 0 || Integer.parseInt(strB)*Integer.parseInt(strA) == 0)
@@ -40,11 +46,8 @@ public class Main {
                        throw new Exception("throws Exception //т.к. введено неподходящее число больше X или меньше I");
                    if (Integer.parseInt(strB) < 1 || Integer.parseInt(strB) > 10)
                        throw new Exception("throws Exception //т.к. введено неподходящее число больше X или меньше I");
-                   if (userInput.length > 3)
-                       throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
-                   if (userInput.length < 2)
-                       throw new Exception("throws Exception //т.к. строка не является математической операцией");
-               result = calc(Integer.parseInt(strA), Integer.parseInt(strB), operand);//отправляю переменны стрА и стрб в метод в целочисленной форме
+                   String operand = userInput[1];
+                   result = calc(Integer.parseInt(strA), Integer.parseInt(strB), operand);//отправляю переменны стрА и стрб в метод в целочисленной форме
                    if (result == 0)
                        throw new Exception("throws Exception //т.к. В римской системе нет 0");
                    System.out.println(Roman());
