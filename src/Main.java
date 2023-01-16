@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Main {
     static int result;
-    static int test;
 
     public static void main(String[] args) throws Exception {
         Scanner input = new Scanner(System.in);
@@ -14,6 +13,8 @@ public class Main {
                String operand = userInput[1];
                int a = Integer.parseInt(userInput[0]); //приведение первой переменной в целое число и отделение ее от массива
                int b = Integer.parseInt(userInput[2]); //приведение второй переменной в целое число и отделение ее от массива
+               if (a * b == 0 || b * a == 0)
+                       throw new Exception("throws Exception //т.к. используются одновременно разные системы счисления");
                if (a < 1 || a > 10)
                    throw new Exception("throws Exception //т.к. введено неподходящее число больше 10 или меньше 1");
                if (b < 1 || b > 10)
@@ -33,6 +34,8 @@ public class Main {
                String operand = userInput[1];
                String strA = String.valueOf(romanToNumber(userInput[0])); //приведение первой переменной в строку и поиск арабской цифры число и отделение ее от массива
                String strB = String.valueOf(romanToNumber(userInput[2])); //приведение первой переменной в строку и поиск арабской цифры число и отделение ее от массива
+                   if (Integer.parseInt(strA)*Integer.parseInt(strB) == 0 || Integer.parseInt(strB)*Integer.parseInt(strA) == 0)
+                       throw new Exception("throws Exception //т.к. используются одновременно разные системы счисления");
                    if (Integer.parseInt(strA) < 1 || Integer.parseInt(strA) > 10)
                        throw new Exception("throws Exception //т.к. введено неподходящее число больше X или меньше I");
                    if (Integer.parseInt(strB) < 1 || Integer.parseInt(strB) > 10)
@@ -51,7 +54,7 @@ public class Main {
            }
     }
 
-    public static int romanToNumber(String str) { //соответствие римской иарабской цифры
+    public static int romanToNumber(String str) { //соответствие римской и арабской цифры
            int a = 0;
            switch (str) {
                case "I":
