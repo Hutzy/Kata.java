@@ -6,9 +6,6 @@ import java.util.Scanner;
 
 public class Main {
     static int result;
-    static Scanner input = new Scanner(System.in);
-    static int a, b;
-    static char operand;
 
     public static void main(String[] args) throws Exception {
         try {
@@ -87,25 +84,26 @@ public class Main {
 
 
 
-    public static int calc(int a, int b, String operand) throws Exception {
-            int result = 0;
-            switch (operand) {
-                case "+":
-                    result = a + b;
-                    break;
-                case "-":
-                    result = a - b;
-                    break;
-                case "*":
-                    result = a * b;
-                    break;
-                case "/":
-                        result = a / b;
-                default:
-            }
-            return result;
+    public static int calc(int a, int b, String operand) {
+        int result = 0;
+        switch (operand) {
+            case "+":
+                result = a + b;
+                break;
+            case "-":
+                result = a - b;
+                break;
+            case "*":
+                result = a * b;
+                break;
+            case "/":
+                result = a / b;
+            default:
         }
+        return result;
     }
+}
+
 
 
         /*
