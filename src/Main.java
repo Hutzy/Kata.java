@@ -1,5 +1,5 @@
-// некорректно исключение при вводе V - 2
-// некорректно исключение при вводе дробного числа
+// некорректно исключение при вводе  2 - I
+// некорректно исключение при вводе дробного числа с номером 1
 
 import java.util.Scanner;
 
@@ -29,7 +29,7 @@ public class Main {
                result = calc(a, b, operand);
                System.out.println(result);
                } catch (NumberFormatException e) {
-                   System.out.println("throws Exception //т.к. число должно быть целым"); //отлавливаем ошибку при вводе дробного числа
+                   System.out.println("throws Exception //т.к. Вводить можно только целые числа"); //отлавливаем ошибку при вводе дробного числа
                }
 
            } else {
@@ -112,7 +112,7 @@ public class Main {
     }
 
 
-    public static int calc(int a, int b, String operand) { //метод для подсчетов
+    public static int calc(int a, int b, String operand) throws Exception { //метод для подсчетов
         int result = 0;
         switch (operand) {
             case "+":
@@ -126,7 +126,9 @@ public class Main {
                 break;
             case "/":
                 result = a / b;
+                break;
             default:
+                throw new Exception("throws Exception //т.к. Введен некорректный знак операции");
         }
         return result;
     }
