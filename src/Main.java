@@ -11,7 +11,7 @@ public class Main {
         System.out.println("Введите 2 целых числа: ");
         String str = input.nextLine();
         String[] userInput = str.split(" "); //деление массива на элменеты, с помощью пробела
-           if (new Scanner(str).hasNextInt()) {
+           if (new Scanner(str).hasNextInt()) { //проверка типа вводимого значения
                try {
                    if (userInput.length > 3)
                        throw new Exception("throws Exception //т.к. формат математической операции не удовлетворяет заданию - два операнда и один оператор (+, -, /, *)");
